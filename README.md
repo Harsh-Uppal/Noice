@@ -9,3 +9,4 @@ Change the values in the text boxes to see the result<br>
 Play/Pause button is to pause and play the simulation.<br>
 
 # Made by : Harsh Uppal
+Copyright © Harsh
