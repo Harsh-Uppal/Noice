@@ -8,4 +8,4 @@ It uses p5.js library for visualizing and stuff
 Change the values in the text boxes to see the result
 Play/Pause button is to pause and play the simulation.
 
-#Made by : Harsh Uppal
+# Made by : Harsh Uppal
