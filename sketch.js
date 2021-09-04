@@ -10,11 +10,15 @@ let presets = [
   [1, 2, 20, 21, 213, .1, false, 150],
   [Math.round(Math.random() * 9 + 1), 1, 12, 21, 213, 11, .01, false, 150],
   [10, 1, 12, 21, 213, 11, 10, false, 150],
-  [1, 4, 110, 40, 10, 2, .001, false, 150]
+  [1, 4, 110, 40, 10, 2, .001, false, 150],
+  [1, 2, 12, 2, 2, 3, .1, false, 180]
 ];
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight * .8);
+
+  textSize(20);
+  textAlign(CENTER, CENTER);
 
   let randPreset = random(presets);
 
@@ -74,4 +78,8 @@ function draw() {
     endShape(CLOSE);
   else
     endShape();
+
+  stroke("lime");
+  fill("cyan");
+  text("Made By : Harsh Uppal", width - 120, height * .9);
 }
