@@ -6,11 +6,60 @@
   <script src="p5.sound.min.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
   <meta charset="utf-8">
-  <title>Noice</title>
+  <title>Wave Manipulator</title>
 </head>
 
-<body bgcolor="gray">
-  <script src="sketch.js"></script>
+<body>
+  <script src="app.js"></script>
+
+  <div class="inputPanel">
+    <div class="userInput">
+      <div class="head">Wave 1 x Speed Divisor:</div>
+      <input id="Inp1" onkeyup="reloadInputs()" type="number" placeholder="Enter a number" \>
+    </div>
+    <div class="userInput">
+      <div class="head">Wave 1 y Speed Divisor:</div>
+      <input id="Inp2" onkeyup="reloadInputs()" type="number" placeholder="Enter a number" \>
+    </div>
+    <div class="userInput">
+      <div class="head">Wave 2 x Multiplier:</div>
+      <input id="Inp3" onkeyup="reloadInputs()" type="number" placeholder="Enter a number" \>
+    </div>
+    <div class="userInput">
+      <div class="head">Wave 2 y Multiplier:</div>
+      <input id="Inp4" onkeyup="reloadInputs()" type="number" placeholder="Enter a number" \>
+    </div>
+    <div class="userInput">
+      <div class="head">Wave 2 x Speed Multiplier:</div>
+      <input id="Inp5" onkeyup="reloadInputs()" type="number" placeholder="Enter a number" \>
+    </div>
+    <div class="userInput">
+      <div class="head">Wave 2 y Speed Multiplier:</div>
+      <input id="Inp6" onkeyup="reloadInputs()" type="number" placeholder="Enter a number" \>
+    </div>
+    <div class="userInput">
+      <div class="head">Simulation speed:</div>
+      <input id="Inp7" onkeyup="reloadInputs()" type="number" placeholder="Enter a number" \>
+    </div>
+    <div class="userInput">
+      <div class="head">Wave size:</div>
+      <input id="Inp8" onkeyup="reloadInputs()" type="number" placeholder="Enter a number" \>
+    </div>
+
+    <div class="btnContainer">
+      <button class="playPauseBtn" onclick="pausePlayBtnPressed()">Play / Pause</button>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="header">
+      <div class="headingContainer">
+        <h2>Wave Manipulator</h2>
+      </div>
+      <button title="Share" class="shareBtn" onclick="share()"><img src="share.png" class="shareImg"></button>
+    </div>
+    <main></main>
+  </div>
 </body>
 
 </html>
