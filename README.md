@@ -1,4 +1,4 @@
-# "Noice"
+# "Wave Manipulator"
 
 This project is just for test<br>
 If you have any suggestions to improve this project feel free to pull up a issue<br>
