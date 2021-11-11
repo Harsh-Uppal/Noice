@@ -1,7 +1,7 @@
+const webURL = 'http://127.0.0.1:5500';
 let pauseBtn, nextFrameBtn, lastFrameBtn, slowDownBtn, speedUpBtn;
 let paused = false, pauseFrame;
 let presets = [
-
   [1, 1, 15, 10, 5, 10, 4, 100],
   [1, 1, 2, 2, 50, 50, 6, 100],
   [2, 2, 5, 5, 10, 10, 5, 100],
@@ -12,9 +12,10 @@ let presets = [
   [1, 2, 20, 21, 2, 1, 9, 150],
   [1, 1, 2, 12, 5, 5, 9, 180],
   [1, 4, 110, 40, 2, 10, 10, 150],
+  [1, 1, 100, 5, 5, 50, 6, 100],
   [1, 1, Math.round(Math.random() * 8 + 1), 40, 1, 2, 8, 80]
 ];
-let inputs = [];
+let inputs = [], link = '';
 
 addEventListener('resize', () => {
   createCanvas(window.innerWidth * 7.5 / 10, window.innerHeight * .8);
@@ -37,14 +38,40 @@ function reloadInputs() {
     inputs[i] = parseFloat(document.querySelector('#Inp' + (i + 1)).value);
 }
 
+function checkUrl() {
+  let urlStr = window.location.href;
+  let url = new URL(urlStr);
+
+  let extractedInputs = [];
+
+  for (let i = 0; i < 8; i++) {
+    let cUInp = url.searchParams.get('uInp' + i);
+    let floatCInp = parseFloat(cUInp);
+
+    if (isNaN(floatCInp))
+      return false;
+    else
+    {
+      extractedInputs[i] = floatCInp;
+      document.querySelector('#Inp' + (i + 1)).value = floatCInp;
+    }
+  }
+
+  return extractedInputs;
+}
+
 function setup() {
   createCanvas(window.innerWidth * 7.5 / 10, window.innerHeight * .8);
 
   textSize(20);
   textAlign(CENTER, CENTER);
 
-  setRandomPreset();
-  reloadInputs();
+  if (checkUrl() == false){
+    setRandomPreset();
+    reloadInputs();
+  }
+  else
+    inputs = checkUrl();  
 }
 
 function showPauseIndicator(color) {
@@ -85,6 +112,35 @@ function pausePlayBtnPressed() {
   showPauseIndicator('red');
 }
 
+function generateShareUrl() {
+  let generatedUrl = webURL;
+
+  generatedUrl += '?';
+
+  for (let i = 0; i < 7; i++)
+    generatedUrl += `uInp${i}=${inputs[i]}&`
+
+  generatedUrl += `uInp${7}=${inputs[7]}`
+
+  return generatedUrl;
+}
+
 function share() {
-  alert('Coming soon!');
+  let shareUrl = generateShareUrl();
+  
+  link = shareUrl;
+  document.querySelector('.share>.url').href = shareUrl;
+  document.querySelector('.share>.url').innerHTML = shareUrl;
+
+  document.querySelector('.share').style.display = '';
+}
+
+function hideShare() {
+  document.querySelector('.share').style.display = 'none';
+}
+
+function copyShareUrl() {
+  navigator.clipboard.writeText(link);
+
+  alert('Link copied');
 }
