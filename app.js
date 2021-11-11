@@ -1,4 +1,4 @@
-const webURL = 'http://127.0.0.1:5500';
+const webURL = 'https://harsh-uppal.github.io/Wave-Manipulator';
 let pauseBtn, nextFrameBtn, lastFrameBtn, slowDownBtn, speedUpBtn;
 let paused = false, pauseFrame;
 let presets = [
