@@ -1,4 +1,4 @@
-const webURL = 'https://harsh-uppal.github.io/Wave-Manipulator';
+const webURL = 'http://127.0.0.1:5500';
 let pauseBtn, nextFrameBtn, lastFrameBtn, slowDownBtn, speedUpBtn;
 let paused = false, pauseFrame;
 let presets = [
@@ -13,6 +13,8 @@ let presets = [
   [1, 1, 2, 12, 5, 5, 9, 180],
   [1, 4, 110, 40, 2, 10, 10, 150],
   [1, 1, 100, 5, 5, 50, 6, 100],
+  [1, 1, 3, 25, 10, 20, 9, 150],
+  [1, 15, 100, 100, 1, 1, 8, 43],
   [1, 1, Math.round(Math.random() * 8 + 1), 40, 1, 2, 8, 80]
 ];
 let inputs = [], link = '';
@@ -50,8 +52,7 @@ function checkUrl() {
 
     if (isNaN(floatCInp))
       return false;
-    else
-    {
+    else {
       extractedInputs[i] = floatCInp;
       document.querySelector('#Inp' + (i + 1)).value = floatCInp;
     }
@@ -66,12 +67,12 @@ function setup() {
   textSize(20);
   textAlign(CENTER, CENTER);
 
-  if (checkUrl() == false){
+  if (checkUrl() == false) {
     setRandomPreset();
     reloadInputs();
   }
   else
-    inputs = checkUrl();  
+    inputs = checkUrl();
 }
 
 function showPauseIndicator(color) {
@@ -127,7 +128,7 @@ function generateShareUrl() {
 
 function share() {
   let shareUrl = generateShareUrl();
-  
+
   link = shareUrl;
   document.querySelector('.share>.url').href = shareUrl;
   document.querySelector('.share>.url').innerHTML = shareUrl;
